@@ -1,0 +1,335 @@
+service: student-attendance-api
+
+plugins:
+  - serverless-iam-roles-per-function
+  - serverless-python-requirements
+provider:
+  name: aws
+  runtime: python3.7
+  region: ${opt:region, 'us-east-1'}
+  stage: ${opt:stage, 'dev'}
+  stackTags:
+    owner: ${opt:owner} 
+  tags:
+    owner: ${opt:owner} 
+    env: face-recognition
+
+  iamRoleStatements:
+    - Effect: "Allow"
+      Action:
+        - "s3:*"
+      Resource: "*"
+    - Effect: "Allow"
+      Action:
+        - "rekognition:CompareFaces"
+      Resource: "*"
+    - Effect: "Allow"
+      Action:
+        - "SNS:Publish"
+      Resource: "*"
+    - Effect: "Allow"
+      Action:
+        - "dynamodb:PutItem"
+      Resource: "*"
+    - Effect: "Allow"
+      Action:
+        - "lambda:InvokeFunction"
+      Resource: "*"
+    - Effect: "Allow"
+      Action:
+        - "cognito-idp:*"
+      Resource: "*"
+
+# you can define service wide environment variables here
+#  environment:
+#    variable1: value1
+
+# you can add packaging information here
+#package:
+#  include:
+#    - include-me.py
+#    - include-me-dir/**
+#  exclude:
+#    - exclude-me.py
+#    - exclude-me-dir/**
+
+functions:
+  compare-faces:
+    handler: functions/compare_faces.handler
+    tags:
+      service: compare-faces
+    events:
+    - http:
+        path: compare-faces 
+        method: post
+        cors: true
+  generate-presigned-url:
+    handler: functions/generate_presigned_url.handler
+    tags:
+      service: generate-presigned-url
+    events:
+    - http:
+        path: generate-presigned-url 
+        method: post
+        cors: true
+  add-class:
+    vpc:
+      securityGroupIds:
+        - sg-e20868d4
+      subnetIds:
+        - subnet-b3a37182
+        - subnet-5f92d351
+        - subnet-db0b84bd
+    handler: functions/add_class.handler
+    tags:
+      service: add_class
+    events:
+    - http:
+        path: add-class
+        method: post
+        cors: true
+  add-student:
+    vpc:
+      securityGroupIds:
+        - sg-e20868d4
+      subnetIds:
+        - subnet-b3a37182
+        - subnet-5f92d351
+        - subnet-db0b84bd
+    handler: functions/add_student.handler
+    tags:
+      service: add_student
+    events:
+    - http:
+        path: add-student
+        method: post
+        cors: true
+  add-lecturer:
+    vpc:
+      securityGroupIds:
+        - sg-e20868d4
+      subnetIds:
+        - subnet-b3a37182
+        - subnet-5f92d351
+        - subnet-db0b84bd  
+    handler: functions/add_lecturer.handler
+    tags:
+      service: add_lecturer
+    events:
+    - http:
+        path: add-lecturer
+        method: post
+        cors: true
+  add-module:
+    vpc:
+      securityGroupIds:
+        - sg-e20868d4
+      subnetIds:
+        - subnet-b3a37182
+        - subnet-5f92d351
+        - subnet-db0b84bd
+    timeout: 25
+    handler: functions/add_module.handler
+    tags:
+      service: add_module
+    events:
+    - http:
+        path: add-module
+        method: post
+        cors: true
+  add-course:
+    vpc:
+      securityGroupIds:
+        - sg-e20868d4
+      subnetIds:
+        - subnet-b3a37182
+        - subnet-5f92d351
+        - subnet-db0b84bd
+    handler: functions/add_course.handler
+    tags:
+      service: add_course
+    events:
+    - http:
+        path: add-course
+        method: post
+        cors: true
+  get-students:
+    vpc:
+      securityGroupIds:
+        - sg-e20868d4
+      subnetIds:
+        - subnet-b3a37182
+        - subnet-5f92d351
+        - subnet-db0b84bd
+    handler: functions/get_students.handler
+    tags:
+      service: get_students
+    events:
+    - http:
+        path: get-students
+        method: get
+        cors: true
+  get-classes:
+    vpc:
+      securityGroupIds:
+        - sg-e20868d4
+      subnetIds:
+        - subnet-b3a37182
+        - subnet-5f92d351
+        - subnet-db0b84bd
+    handler: functions/get_classes.handler
+    tags:
+      service: get_classes
+    events:
+    - http:
+        path: get-classes
+        method: get
+        cors: true
+  get-lecturers:
+    vpc:
+      securityGroupIds:
+        - sg-e20868d4
+      subnetIds:
+        - subnet-b3a37182
+        - subnet-5f92d351
+        - subnet-db0b84bd
+    handler: functions/get_lecturers.handler
+    tags:
+      service: get_lecturers
+    events:
+    - http:
+        path: get-lecturers
+        method: get
+        cors: true
+  get-modules:
+    vpc:
+      securityGroupIds:
+        - sg-e20868d4
+      subnetIds:
+        - subnet-b3a37182
+        - subnet-5f92d351
+        - subnet-db0b84bd
+    handler: functions/get_modules.handler
+    tags:
+      service: get_modules
+    events:
+    - http:
+        path: get-modules
+        method: get
+        cors: true
+  get-courses:
+    vpc:
+      securityGroupIds:
+        - sg-e20868d4
+      subnetIds:
+        - subnet-b3a37182
+        - subnet-5f92d351
+        - subnet-db0b84bd
+    handler: functions/get_courses.handler
+    tags:
+      service: get_courses
+    events:
+    - http:
+        path: get-courses
+        method: get
+        cors: true
+  get-student-attendance:
+    vpc:
+      securityGroupIds:
+        - sg-e20868d4
+      subnetIds:
+        - subnet-b3a37182
+        - subnet-5f92d351
+        - subnet-db0b84bd
+    handler: functions/get_attendance.handler
+    tags:
+      service: get_attendance
+    events:
+    - http:
+        path: get-attendance
+        method: get
+        cors: true
+  signin-cognito:
+    handler: functions/sign_in.handler
+    tags:
+      service: signin-cognito
+    events:
+    - http:
+        path: signin-cognito 
+        method: post
+        cors: true
+  newpwreq-cognito:
+    handler: functions/new_password_required.handler
+    tags:
+      service: newpwreq-cognito
+    events:
+    - http:
+        path: newpwreq-cognito
+        method: post
+        cors: true
+  add-user:
+    timeout: 25
+    handler: functions/add_user.handler
+    tags:
+      service: add-user
+    events:
+    - http:
+        path: add-user
+        method: post
+        cors: true
+  # face-detection:
+  #   handler: functions/face_detection.handler
+  #   tags:
+  #     service: face-detection
+  #   events:
+  #   - http:
+  #       path: detect-faces 
+  #       method: post 
+  #   environment:
+  #     FACE_DETECTION_INDEX_TOPIC: !Ref FaceDetectionIndexTopic
+  #     FACE_SEARCH_ENDPOINT: ${opt:face-search-endpoint, 'https://k7mpxh246a.execute-api.us-east-1.amazonaws.com/dev/search-faces'}
+  # face-search:
+  #   handler: functions/face_search.handler
+  #   tags:
+  #     service: face-search
+  #   environment:
+  #     REKOGNITION_COLLECTION_ID: ${opt:rekognition-collection-id} 
+  #   events:
+  #   - http:
+  #       path: search-faces 
+  #       method: post 
+  # face-index:
+  #   handler: functions/face_index.handler
+  #   tags:
+  #     service: face-index
+  #   environment:
+  #     REKOGNITION_COLLECTION_ID: ${opt:rekognition-collection-id}
+  #     FACE_DETECTION_PERSIST_TOPIC: !Ref FaceDetectionPersistTopic
+  #   events:
+  #   - sns:
+  #       arn: !Ref FaceDetectionIndexTopic
+  #       topicName: FaceDetectionIndexTopic
+  # persist-metadata:
+  #   handler: functions/persist_metadata.handler
+  #   tags:
+  #     service: persist-metadata
+  #   environment:
+  #     FACE_DETECTION_DDB_TABLE: !Ref FaceDetectionDDBTable
+  #   events:
+  #   - sns:
+  #       arn: !Ref FaceDetectionPersistTopic
+  #       topicName: FaceDetectionPersistTopic
+
+#resources:
+  #   # S3
+  # - ${file(resources/s3-photo-bucket.yml)}
+    # SNS Topic Index
+  # - ${file(resources/sns-topic-index.yml)}
+  #   # SNS Topic Persist
+  # - ${file(resources/sns-topic-persist.yml)}
+  #   # DynamoDB Table
+  # - ${file(resources/dynamo-table.yml)}
+
+# custom:
+#   datadog:
+#     forwarder: ${opt:forwarderarn}
