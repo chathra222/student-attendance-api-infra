@@ -40,19 +40,6 @@ provider:
         - "cognito-idp:*"
       Resource: "*"
 
-# you can define service wide environment variables here
-#  environment:
-#    variable1: value1
-
-# you can add packaging information here
-#package:
-#  include:
-#    - include-me.py
-#    - include-me-dir/**
-#  exclude:
-#    - exclude-me.py
-#    - exclude-me-dir/**
-
 functions:
   compare-faces:
     handler: functions/compare_faces.handler
@@ -277,59 +264,3 @@ functions:
         path: add-user
         method: post
         cors: true
-  # face-detection:
-  #   handler: functions/face_detection.handler
-  #   tags:
-  #     service: face-detection
-  #   events:
-  #   - http:
-  #       path: detect-faces 
-  #       method: post 
-  #   environment:
-  #     FACE_DETECTION_INDEX_TOPIC: !Ref FaceDetectionIndexTopic
-  #     FACE_SEARCH_ENDPOINT: ${opt:face-search-endpoint, 'https://k7mpxh246a.execute-api.us-east-1.amazonaws.com/dev/search-faces'}
-  # face-search:
-  #   handler: functions/face_search.handler
-  #   tags:
-  #     service: face-search
-  #   environment:
-  #     REKOGNITION_COLLECTION_ID: ${opt:rekognition-collection-id} 
-  #   events:
-  #   - http:
-  #       path: search-faces 
-  #       method: post 
-  # face-index:
-  #   handler: functions/face_index.handler
-  #   tags:
-  #     service: face-index
-  #   environment:
-  #     REKOGNITION_COLLECTION_ID: ${opt:rekognition-collection-id}
-  #     FACE_DETECTION_PERSIST_TOPIC: !Ref FaceDetectionPersistTopic
-  #   events:
-  #   - sns:
-  #       arn: !Ref FaceDetectionIndexTopic
-  #       topicName: FaceDetectionIndexTopic
-  # persist-metadata:
-  #   handler: functions/persist_metadata.handler
-  #   tags:
-  #     service: persist-metadata
-  #   environment:
-  #     FACE_DETECTION_DDB_TABLE: !Ref FaceDetectionDDBTable
-  #   events:
-  #   - sns:
-  #       arn: !Ref FaceDetectionPersistTopic
-  #       topicName: FaceDetectionPersistTopic
-
-#resources:
-  #   # S3
-  # - ${file(resources/s3-photo-bucket.yml)}
-    # SNS Topic Index
-  # - ${file(resources/sns-topic-index.yml)}
-  #   # SNS Topic Persist
-  # - ${file(resources/sns-topic-persist.yml)}
-  #   # DynamoDB Table
-  # - ${file(resources/dynamo-table.yml)}
-
-# custom:
-#   datadog:
-#     forwarder: ${opt:forwarderarn}
