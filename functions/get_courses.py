@@ -45,6 +45,14 @@ def handler(event, context):
 
     print(course_list)
 
-    response = {"statusCode": 200, "body": json.dumps(course_list)}
+    response = {
+        "statusCode": 200,
+        "body": json.dumps(course_list),
+        "headers": {
+            "Access-Control-Allow-Headers": "Content-Type",
+            "Access-Control-Allow-Origin": "*",
+            "Access-Control-Allow-Methods": "OPTIONS,GET",
+        },
+    }
 
     return response
