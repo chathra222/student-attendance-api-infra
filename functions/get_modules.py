@@ -27,7 +27,6 @@ except pymysql.MySQLError as e:
 
 
 def handler(event, context):
-    lambda_client = boto3.client("lambda", region_name="us-east-1")
 
     sql = "SELECT * from module_tab"
     print(sql)

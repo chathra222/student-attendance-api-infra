@@ -28,7 +28,6 @@ except pymysql.MySQLError as e:
 
 def handler(event, context):
     params = json.loads(event["body"])
-    lambda_client = boto3.client("lambda", region_name="us-east-1")
 
     if "lecturer_id" not in params or "email" not in params:
         logger.error("Validation failed. Missing parameters")

@@ -45,6 +45,7 @@ def handler(event, context):
             },
             headers={"Content-type": "application/json"},
         )
+        print(status)
     elif params["type"] == "lecturer":
         response = congito_client.admin_create_user(
             UserPoolId=poolId,
