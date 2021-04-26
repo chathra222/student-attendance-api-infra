@@ -31,12 +31,11 @@ def handler(event, context):
     sql = "SELECT * from stud_attendance_tab"
     print(sql)
     keys_tup = (
+        "student_id",
+        "attended_time",
+        "attended",
+        "attendance_id",
         "class_id",
-        "lecturer_id",
-        "date",
-        "start_time",
-        "end_time",
-        "module_id",
     )
     with conn.cursor() as cur:
         cur.execute(sql)

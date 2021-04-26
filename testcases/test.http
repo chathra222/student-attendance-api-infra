@@ -2,13 +2,13 @@
 POST https://d6otawvpj7.execute-api.us-east-1.amazonaws.com/dev/add-user HTTP/1.1
 content-type: application/json
 
-{"student_id":"ms20922184","email":"chathraserasinghe89@gmail.com","phone":"1234567890","f_name":"chathra","l_name":"serasinghe","district":"colombo","source_image_key":"chathra.jpg","dob":"1999-12-08","course_id":"1","type":"student"}
+{"student_id":"mzk1","email":"mkamurdeen@gmail.com","phone":"1234567890","f_name":"malik","l_name":"malik","district":"colombo","source_image_key":"chathra.jpg","dob":"1999-12-08","course_id":"1","type":"student"}
 
 #Add lecturer User 
 POST https://d6otawvpj7.execute-api.us-east-1.amazonaws.com/dev/add-user HTTP/1.1
 content-type: application/json
 
-{"lecturer_id":"ms1020202","email":"chathraserasinghe89@gmail.com","mobile":"1234567890","f_name":"crhishan","l_name":"jayakody","gender":"M","type":"lecturer"}
+{"lecturer_id":"admin2","email":"ashfaqzeemath@gmail.com","mobile":"1234567890","f_name":"ashfaq","l_name":"ashfaq","gender":"M","type":"lecturer"}
 
 
 #Flow 1- Sign In for the first time 
@@ -17,26 +17,36 @@ content-type: application/json
 POST https://d6otawvpj7.execute-api.us-east-1.amazonaws.com/dev/signin-cognito HTTP/1.1
 content-type: application/json
 
-{"username":"ms1020202","password":"Tempp@ss123"}
+{"username":"admin2","password":"Tempp@ss123"}
 
 #2)#New Password Required(Session value will be used in this request)
 POST https://d6otawvpj7.execute-api.us-east-1.amazonaws.com/dev/newpwreq-cognito HTTP/1.1
 content-type: application/json
 
-{"username":"ms20922185","newPassword":"Tempp@ss123","session":"AYABeOuNlanlMH9cYcufUsjmAGkAHQABAAdTZXJ2aWNlABBDb2duaXRvVXNlclBvb2xzAAEAB2F3cy1rbXMAS2Fybjphd3M6a21zOnVzLWVhc3QtMTo3NDU2MjM0Njc1NTU6a2V5L2IxNTVhZmNhLWJmMjktNGVlZC1hZmQ4LWE5ZTA5MzY1M2RiZQC4AQIBAHiAcAt7Ei832QLLvv5tnR-fAKEzaf-OMDg-j1aLh6qMVAHWmoDas1YXJHZ2WSW_hekoAAAAfjB8BgkqhkiG9w0BBwagbzBtAgEAMGgGCSqGSIb3DQEHATAeBglghkgBZQMEAS4wEQQMn3scT_2peUBl5kkpAgEQgDtFK7sQCwY7KSCxeEQjVs5ye8-C5WNN-AkdfK-dIK85lZN0ZYnsPFlKxueCK2jU_StdKdcUBoAHqdiwVQIAAAAADAAAEAAAAAAAAAAAAAAAAAAPUEVp8k4lIrGr6XSPFlFX_____wAAAAEAAAAAAAAAAAAAAAEAAAC65tI_iZ4RXoeA2dgI2oJoedD27gapiI07f3d9eNcF--1EQaKhYkTjeqpXWcvWF7F-icXQFrjf8Sm1ExXcGkhyFpazJNlVOMOA89lgN05iGekzqIDvFWJRRik2wam5f3-Z7qGWUe-fLSdRAJjgbHhW0fOiO-hFlwFUxD2MzpY3vTfX5ashSik8dcOfaDbGRIDzax1Me2THeoWde6mpeFXG0SbMHic1USE9qj0LAsMEGDlJeDecTeXeRwIcHxl7y9_ebdLvpNzldtJw6g"}
+{"username":"admin2","newPassword":"Admin2@123","session":"AYABeEdYuZ6OukoJbTOBJLWPp_4AHQABAAdTZXJ2aWNlABBDb2duaXRvVXNlclBvb2xzAAEAB2F3cy1rbXMAS2Fybjphd3M6a21zOnVzLWVhc3QtMTo3NDU2MjM0Njc1NTU6a2V5L2IxNTVhZmNhLWJmMjktNGVlZC1hZmQ4LWE5ZTA5MzY1M2RiZQC4AQIBAHiAcAt7Ei832QLLvv5tnR-fAKEzaf-OMDg-j1aLh6qMVAHtIaLCIN7luTrwIKp0TCpUAAAAfjB8BgkqhkiG9w0BBwagbzBtAgEAMGgGCSqGSIb3DQEHATAeBglghkgBZQMEAS4wEQQM-mSDKlM342c_DhEXAgEQgDthyJ3SxVC8z6SYgDewlm_Oehv88prglno_J6Z3UendCMP1o9gUM78xljGCwhhpcebW9UxD8tCZZD-t3QIAAAAADAAAEAAAAAAAAAAAAAAAAABtoUHyNB26Bgh3kMyLNGDE_____wAAAAEAAAAAAAAAAAAAAAEAAAC2rPsDaWxG4KtUkjtQ1UkwMzVoQ_aDv11tJ1RxwfEkNUuvdSiu32ghfFc1vVvR22r39qNOiBY_Cc4yVQKV0iQdJG4_owlkhjqoq0sv0YLODuZSKyYqkDu_KS-GSyYSHbEEh206MZYIKRKqeJb_MDzJIYQStUbqb6bYuYFjGVYoTOsmXvQmL8n2ILcHqtMNkX-ocT4K3koMp_vQYRlTifz_onyKh2mDMXuoiCxGHh5zDib6z5TWYcLtObUT2WHLTtzoLEI-HN7v"}
 
 #Flow 2- Sign In for subsequent attempts
 POST https://d6otawvpj7.execute-api.us-east-1.amazonaws.com/dev/signin-cognito HTTP/1.1
 content-type: application/json
 
-{"username":"ms20922185","password":"Tempp@ss123"}
+{"username":"admin2","password":"Admin2@123"}
+
 
 
 #add module
 POST https://d6otawvpj7.execute-api.us-east-1.amazonaws.com/dev/add-module
 content-type: application/json
 
-{"module_id":"1511","name":"SNA","lecturer_id":"1","course_id":"1"}
+{"attendance_id":"123456","student_id":"SNA","attended_time":"xx123","attended":"1","class_id":""}
+
+
+
+
+#add module
+POST https://d6otawvpj7.execute-api.us-east-1.amazonaws.com/dev/add-module
+content-type: application/json
+
+{"module_id":"123456","name":"SNA","lecturer_id":"xx123","course_id":"1"}
 
 
 #add course
@@ -55,30 +65,37 @@ content-type: application/json
 POST https://d6otawvpj7.execute-api.us-east-1.amazonaws.com/dev/add-lecturer
 content-type: application/json
 
-{"lecturer_id":"1","email":"shyam@gmail.com","mobile":"1234567890","f_name":"shyam","l_name":"reyal","gender":"M"}
+{"lecturer_id":"mslsabc","email":"shyam@gmail.com","mobile":"1234567890","f_name":"shyam","l_name":"reyal","gender":"M"}
 
 
 #add class
 POST https://d6otawvpj7.execute-api.us-east-1.amazonaws.com/dev/add-class
 content-type: application/json
 
-{"class_id":"2","lecturer_id":"ml20000","date":"2021-04-11","start_time":"2021-04-11 08:30:00","end_time":"2021-04-11 10:30:00","module_id":"colombo"}
+{"class_id":"20330","lecturer_id":"ml20000","date":"2021-04-11","start_time":"2021-04-11 08:30:00","end_time":"2021-04-11 10:30:00","module_id":"colombo"}
 
 
 #mark Attendance
-POST https://msc6wnrhw1.execute-api.us-east-1.amazonaws.com/dev/compare-faces
+POST https://d6otawvpj7.execute-api.us-east-1.amazonaws.com/dev/compare-faces
 content-type: application/json
 
-{"srcBucket": "student-faces-source","sourceName":"md-source.jpg","targetBucket": "student-faces-target","targetName":"md-target1.jpg", "userId":"chathra"}
+{"srcBucket": "student-faces-source","sourceName":"ms000000.jpg","targetBucket": "student-faces-target","targetName":"ms000000.jpg", "userId":"ms000000"}
 
 
 POST https://d6otawvpj7.execute-api.us-east-1.amazonaws.com/dev/generate-presigned-url
 content-type: application/json
 
-{"bucket": "student-faces-source","fileName": "ms011111.jpg"}
+{"bucket": "student-faces-target","fileName": "ms000000.jpg"}
 
 
 PUT https://student-faces-source.s3.amazonaws.com/mdsource?AWSAccessKeyId=ASIAXV6XYSOIYQ6I2GTD&Signature=ckn3d1H2pWH2uuQdNS7TxBhDEvg%3D&x-amz-security-token=IQoJb3JpZ2luX2VjEL%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLWVhc3QtMSJIMEYCIQDCzU6d3nUCaMzKEl42HCJdHA07NB%2BwepR3N5qi7JMTqwIhAI%2FIgpRMP6YKE9AMeowbUCY5HiNsHt09TQ9oQfoQL3YGKvABCCcQABoMNTI4MTk2NjA0ODE3IgyLNboEweMGoeftq8EqzQFTvDKK9G2dVUZH0METbk9tlSMUbmm0PUppYAW2Ecnp9qpkbpeaIiHVWVcQLNXc%2FHmlcDM13%2BXltxhtVNFfs0j9p%2BZL8kR4mj%2FZV2BhuEuN%2BGNIRxn31Ie77DFzzdE4uIwgeyB4yGp7exeDvguQU356w2ICPpDerrmXRy7fOTBhoK8Kro5VbyXRukjRXE5fQkfFZZZNcwx6FKYZGvoQiDssKOPFIrYJXmhujaLvRdUuxeQ1XPNlG7e6S7RwYY7NszGSmXFDMQC3WJma42oXMKvY5IMGOt8BTAY8gh2GcocO3qDGtQF5NSdUrQIlWb0hlmcDeCHVHcFcutkfLKzwGCTBxtDbV2v26pEB%2Bin41Ko3Yoh62fVDLynqFRX%2F2gWHlm9wjrdOj3Rob8Pa0oL%2B2cPmxPd6L57e5jchB9ShaXhhRE4yLaWm6LJ%2FVjZREpv%2Fgm3zZ%2F28%2FaheOGjJLomP%2BCBumvdu%2F%2FErFRfpD8C%2Blv7k9iKABAjHL95bB%2FUsI4ZTV4R08CJv8gErUA1SmCA%2BtQMiBS2ROnAcL582dyp55FdbRY8cJyCHOaWLwv3X4BsPMvcEqcSGAw%3D%3D&Expires=1618557824
+
+
+POST https://d6otawvpj7.execute-api.us-east-1.amazonaws.com/dev/mark-attendance
+content-type: application/json
+
+{"attendance_id":"12345","targetBucket": "student-faces-target","targetName": "ms000000.jpg","student_id":"ms000000","attended_time":"2021-04-11 08:30:00","class_id":"1234"}
+
 
 #Get courses
 GET https://d6otawvpj7.execute-api.us-east-1.amazonaws.com/dev/get-courses

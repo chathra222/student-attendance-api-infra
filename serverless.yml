@@ -140,6 +140,22 @@ functions:
         path: add-course
         method: post
         cors: true
+  add-student-attendance:
+    vpc:
+      securityGroupIds:
+        - sg-e20868d4
+      subnetIds:
+        - subnet-b3a37182
+        - subnet-5f92d351
+        - subnet-db0b84bd
+    handler: functions/add_student_attendance.handler
+    tags:
+      service: add_student_attendance
+    events:
+    - http:
+        path: add-student-attendance
+        method: post
+        cors: true
   get-students:
     vpc:
       securityGroupIds:
@@ -262,5 +278,15 @@ functions:
     events:
     - http:
         path: add-user
+        method: post
+        cors: true
+  mark-attendance:
+    timeout: 25
+    handler: functions/mark_attendance.handler
+    tags:
+      service: mark-attendance
+    events:
+    - http:
+        path: mark-attendance
         method: post
         cors: true

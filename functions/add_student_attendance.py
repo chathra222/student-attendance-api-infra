@@ -48,7 +48,7 @@ def handler(event, context):
     body = {
         "message": "Marked Attendance",
         "class_id": params["class_id"],
-        "student_id": params["lecturer_id"],
+        "student_id": params["student_id"],
         "attended": params["attended"],
     }
 
