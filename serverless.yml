@@ -3,6 +3,11 @@ service: student-attendance-api
 plugins:
   - serverless-iam-roles-per-function
   - serverless-python-requirements
+custom:
+  # Enable or disable caching globally
+  apiGatewayCaching:
+    enabled: false
+    ttlInSeconds: 0 
 provider:
   name: aws
   runtime: python3.7

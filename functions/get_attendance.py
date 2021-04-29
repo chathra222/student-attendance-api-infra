@@ -31,15 +31,16 @@ def handler(event, context):
     sql = "SELECT * from stud_attendance_tab"
     print(sql)
     keys_tup = (
+        "attendance_id",
         "student_id",
         "attended_time",
         "attended",
-        "attendance_id",
         "class_id",
     )
     with conn.cursor() as cur:
         cur.execute(sql)
         rows = cur.fetchall()
+        print(rows)
         course_list = []
         for row in rows:
             if len(keys_tup) == len(row):

@@ -1,3 +1,6 @@
+### API Test Cases####
+# Use Vscode Rest Client to run the test cases
+
 #Add student User 
 POST https://d6otawvpj7.execute-api.us-east-1.amazonaws.com/dev/add-user HTTP/1.1
 content-type: application/json
@@ -9,7 +12,6 @@ POST https://d6otawvpj7.execute-api.us-east-1.amazonaws.com/dev/add-user HTTP/1.
 content-type: application/json
 
 {"lecturer_id":"admin2","email":"ashfaqzeemath@gmail.com","mobile":"1234567890","f_name":"ashfaq","l_name":"ashfaq","gender":"M","type":"lecturer"}
-
 
 #Flow 1- Sign In for the first time 
 
@@ -32,14 +34,11 @@ content-type: application/json
 {"username":"admin2","password":"Admin2@123"}
 
 
-
 #add module
 POST https://d6otawvpj7.execute-api.us-east-1.amazonaws.com/dev/add-module
 content-type: application/json
 
 {"attendance_id":"123456","student_id":"SNA","attended_time":"xx123","attended":"1","class_id":""}
-
-
 
 
 #add module
@@ -75,27 +74,28 @@ content-type: application/json
 {"class_id":"20330","lecturer_id":"ml20000","date":"2021-04-11","start_time":"2021-04-11 08:30:00","end_time":"2021-04-11 10:30:00","module_id":"colombo"}
 
 
-#mark Attendance
+#compare faces
 POST https://d6otawvpj7.execute-api.us-east-1.amazonaws.com/dev/compare-faces
 content-type: application/json
 
 {"srcBucket": "student-faces-source","sourceName":"ms000000.jpg","targetBucket": "student-faces-target","targetName":"ms000000.jpg", "userId":"ms000000"}
 
-
+#Generate Presigned URL
 POST https://d6otawvpj7.execute-api.us-east-1.amazonaws.com/dev/generate-presigned-url
 content-type: application/json
 
 {"bucket": "student-faces-target","fileName": "ms000000.jpg"}
 
 
-PUT https://student-faces-source.s3.amazonaws.com/mdsource?AWSAccessKeyId=ASIAXV6XYSOIYQ6I2GTD&Signature=ckn3d1H2pWH2uuQdNS7TxBhDEvg%3D&x-amz-security-token=IQoJb3JpZ2luX2VjEL%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLWVhc3QtMSJIMEYCIQDCzU6d3nUCaMzKEl42HCJdHA07NB%2BwepR3N5qi7JMTqwIhAI%2FIgpRMP6YKE9AMeowbUCY5HiNsHt09TQ9oQfoQL3YGKvABCCcQABoMNTI4MTk2NjA0ODE3IgyLNboEweMGoeftq8EqzQFTvDKK9G2dVUZH0METbk9tlSMUbmm0PUppYAW2Ecnp9qpkbpeaIiHVWVcQLNXc%2FHmlcDM13%2BXltxhtVNFfs0j9p%2BZL8kR4mj%2FZV2BhuEuN%2BGNIRxn31Ie77DFzzdE4uIwgeyB4yGp7exeDvguQU356w2ICPpDerrmXRy7fOTBhoK8Kro5VbyXRukjRXE5fQkfFZZZNcwx6FKYZGvoQiDssKOPFIrYJXmhujaLvRdUuxeQ1XPNlG7e6S7RwYY7NszGSmXFDMQC3WJma42oXMKvY5IMGOt8BTAY8gh2GcocO3qDGtQF5NSdUrQIlWb0hlmcDeCHVHcFcutkfLKzwGCTBxtDbV2v26pEB%2Bin41Ko3Yoh62fVDLynqFRX%2F2gWHlm9wjrdOj3Rob8Pa0oL%2B2cPmxPd6L57e5jchB9ShaXhhRE4yLaWm6LJ%2FVjZREpv%2Fgm3zZ%2F28%2FaheOGjJLomP%2BCBumvdu%2F%2FErFRfpD8C%2Blv7k9iKABAjHL95bB%2FUsI4ZTV4R08CJv8gErUA1SmCA%2BtQMiBS2ROnAcL582dyp55FdbRY8cJyCHOaWLwv3X4BsPMvcEqcSGAw%3D%3D&Expires=1618557824
-
-
+#mark attendance
 POST https://d6otawvpj7.execute-api.us-east-1.amazonaws.com/dev/mark-attendance
 content-type: application/json
 
-{"attendance_id":"12345","targetBucket": "student-faces-target","targetName": "ms000000.jpg","student_id":"ms000000","attended_time":"2021-04-11 08:30:00","class_id":"1234"}
+{"attendance_id":"102020","targetBucket": "student-faces-target","targetName": "ms000000.jpg","student_id":"ms77777","attended_time":"2021-04-11 08:30:00","class_id":"4444"}
 
+
+#Upload File
+PUT https://student-faces-source.s3.amazonaws.com/mdsource?AWSAccessKeyId=ASIAXV6XYSOIYQ6I2GTD&Signature=ckn3d1H2pWH2uuQdNS7TxBhDEvg%3D&x-amz-security-token=IQoJb3JpZ2luX2VjEL%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLWVhc3QtMSJIMEYCIQDCzU6d3nUCaMzKEl42HCJdHA07NB%2BwepR3N5qi7JMTqwIhAI%2FIgpRMP6YKE9AMeowbUCY5HiNsHt09TQ9oQfoQL3YGKvABCCcQABoMNTI4MTk2NjA0ODE3IgyLNboEweMGoeftq8EqzQFTvDKK9G2dVUZH0METbk9tlSMUbmm0PUppYAW2Ecnp9qpkbpeaIiHVWVcQLNXc%2FHmlcDM13%2BXltxhtVNFfs0j9p%2BZL8kR4mj%2FZV2BhuEuN%2BGNIRxn31Ie77DFzzdE4uIwgeyB4yGp7exeDvguQU356w2ICPpDerrmXRy7fOTBhoK8Kro5VbyXRukjRXE5fQkfFZZZNcwx6FKYZGvoQiDssKOPFIrYJXmhujaLvRdUuxeQ1XPNlG7e6S7RwYY7NszGSmXFDMQC3WJma42oXMKvY5IMGOt8BTAY8gh2GcocO3qDGtQF5NSdUrQIlWb0hlmcDeCHVHcFcutkfLKzwGCTBxtDbV2v26pEB%2Bin41Ko3Yoh62fVDLynqFRX%2F2gWHlm9wjrdOj3Rob8Pa0oL%2B2cPmxPd6L57e5jchB9ShaXhhRE4yLaWm6LJ%2FVjZREpv%2Fgm3zZ%2F28%2FaheOGjJLomP%2BCBumvdu%2F%2FErFRfpD8C%2Blv7k9iKABAjHL95bB%2FUsI4ZTV4R08CJv8gErUA1SmCA%2BtQMiBS2ROnAcL582dyp55FdbRY8cJyCHOaWLwv3X4BsPMvcEqcSGAw%3D%3D&Expires=1618557824
 
 #Get courses
 GET https://d6otawvpj7.execute-api.us-east-1.amazonaws.com/dev/get-courses
@@ -105,8 +105,9 @@ GET https://d6otawvpj7.execute-api.us-east-1.amazonaws.com/dev/get-modules
 GET https://d6otawvpj7.execute-api.us-east-1.amazonaws.com/dev/get-lecturers
 #Get classes
 GET https://d6otawvpj7.execute-api.us-east-1.amazonaws.com/dev/get-classes
-
+#Get Students
 GET https://d6otawvpj7.execute-api.us-east-1.amazonaws.com/dev/get-students
+#Get Attendance
 GET https://d6otawvpj7.execute-api.us-east-1.amazonaws.com/dev/get-attendance
 
 
