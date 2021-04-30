@@ -18,6 +18,12 @@ Parameters:
   CodeCommitWebRepoDescription:
     Type: String
     Default: student-attendance-web
+  CodeCommitAPIInfraRepoName:
+    Type: String
+    Default: student-attendance-api-infra
+  CodeCommitAPIInfraRepoDescription:
+    Type: String
+    Default: student-attendance-api-infra
   BuildTimeoutInMinutes:
     Type: Number
     Default: 15
@@ -29,22 +35,28 @@ Parameters:
     Default: app.apk
 
 Resources:
-  # AWS CodeCommit Git repository to store the mobile app's code
+# AWS CodeCommit Git repository to store the mobile app's code
   CodeRepoMobile:
     Type: AWS::CodeCommit::Repository
     Properties:
       RepositoryDescription: !Ref CodeCommitMobileRepoDescription
       RepositoryName: !Ref CodeCommitMobileRepoName
 ###################################################################
-  # AWS CodeCommit Git repository to store the web app's code
+# AWS CodeCommit Git repository to store the web app's code
   CodeRepoWeb:
     Type: AWS::CodeCommit::Repository
     Properties:
       RepositoryDescription: !Ref CodeCommitWebRepoDescription
       RepositoryName: !Ref CodeCommitWebRepoName
 ###################################################################
+# AWS CodeCommit Git repository to store API and Infra
+  CodeRepoAPIInfra:
+     Type: AWS::CodeCommit::Repository
+     Properties:
+       RepositoryDescription: !Ref CodeCommitAPIInfraRepoDescription
+       RepositoryName: !Ref CodeCommitAPIInfraRepoName
+###################################################################
  
-
 #Cloudformation Service Role
   CloudFormationServiceRole:
     Type: AWS::IAM::Role

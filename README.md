@@ -3,8 +3,6 @@
 This Repository includes code for following
   * APIs for Student Attendance 
 
-
-
 Technologies
 * Python
 * Uses the [Serverless Framework](https://serverless.com/) to deploy the APIs in AWS
@@ -17,17 +15,24 @@ Technologies
 To run Cloudformation and Terraform Commands,
 You should have the Access key and Secret key of a AWS User having Sufficient Permissions for your AWS account
 
+```
 export AWS_ACCESS_KEY_ID=<>
 export AWS_SECRET_ACCESS_KEY=<>
 
+```
+
 * Create CodeCommit Repos and Service Roles
+```
 cd  cf/
 aws cloudformation deploy --template cicd.yaml --stack-name ci-cd-stack  --capabilities CAPABILITY_IAM
+```
 
 * Create Aurora Serverless DB,Jenkins Code Commit Web Hook
+```
 cd tf/
 terraform init
 terraform apply
+```
 
 ## Steps
 
