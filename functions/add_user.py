@@ -1,9 +1,8 @@
-import boto3
 import json
 import logging
 import os
 from botocore.vendored import requests
-
+import boto3
 
 # Set logger
 logger = logging.getLogger()

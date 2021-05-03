@@ -1,8 +1,8 @@
-import boto3
 import json
 import logging
 import os
 import pymysql
+import boto3
 
 # Set logger
 logger = logging.getLogger()

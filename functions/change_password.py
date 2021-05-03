@@ -1,7 +1,7 @@
-import boto3
 import json
 import logging
 import os
+import boto3
 
 
 # Set logger

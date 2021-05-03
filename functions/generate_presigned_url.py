@@ -1,8 +1,8 @@
 import json
-import boto3
 import logging
-from botocore.client import Config
 from datetime import datetime
+from botocore.client import Config
+import boto3
 
 
 logger = logging.getLogger()

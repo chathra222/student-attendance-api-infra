@@ -37,6 +37,7 @@ terraform apply
 ## Steps
 
 Install aws cli 
+Install NodeJs and npm https://www.npmjs.com/get-npm
 Install serverless framework - (https://serverless.com/framework/docs/getting-started/)
 
 Once you have the Serverless framework installed,In the base directory run following,:
