@@ -49,8 +49,7 @@ serverless deploy --owner <owner-name>
 
 ## Usage / Testing
 
-API unit tests
-https://docs.python.org/3/library/unittest.html
+vscode rest client is used for excuting test cases in testcases/test.http file.
 
 ## Static Code Analysis
 Install pylint
