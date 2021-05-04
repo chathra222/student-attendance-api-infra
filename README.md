@@ -13,7 +13,7 @@ Technologies
 ### Infra Setup
 
 To run Cloudformation and Terraform Commands,
-You should have the Access key and Secret key of a AWS User having Sufficient Permissions for your AWS account
+You should have the Access key and Secret key of a AWS User with Sufficient Permissions for your AWS account
 
 ```
 export AWS_ACCESS_KEY_ID=<>
