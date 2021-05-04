@@ -36,11 +36,11 @@ terraform apply
 
 ## Steps
 
-Install aws cli 
-Install NodeJs and npm https://www.npmjs.com/get-npm
-Install serverless framework - (https://serverless.com/framework/docs/getting-started/)
+* Install aws cli 
+* Install NodeJs and npm https://www.npmjs.com/get-npm
+* Install serverless framework - (https://serverless.com/framework/docs/getting-started/)
 
-Once you have the Serverless framework installed,In the base directory run following,:
+* Once you have the Serverless framework installed,In the base directory run following,:
 
 ```
 npm install
@@ -52,10 +52,10 @@ serverless deploy --owner <owner-name>
 vscode rest client is used for excuting test cases in testcases/test.http file.
 
 ## Static Code Analysis
-Install pylint
+* Install pylint
 http://pylint.pycqa.org/en/latest/user_guide/installation.html
 
-Run Static code analysis for Python Lambda functions
+* Run Static code analysis for Python Lambda functions
 py -m pylint functions/*.py
 
 
